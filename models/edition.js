@@ -16,15 +16,16 @@ const EditionSchema = new Schema({
   },
   location: {
     type: String,
-    required: true
+    required: false
   },
    cost: {
+    display: "9.99", approx: 9.9900000000000002, currency: "USD", 
     type: String,
-    required: true
+    required: false
   },
   condition: {
     type: String,
-    required: true
+    required: false
   },
   minimum:{
     display: "9.99", approx: 9.9900000000000002, currency: "USD",
@@ -33,7 +34,7 @@ const EditionSchema = new Schema({
     },
   category: {
     type: String,
-    required: true
+    required: false
   },
   comments: {
     type: String,

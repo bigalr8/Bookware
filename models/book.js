@@ -41,11 +41,11 @@ const BookSchema = new Schema({
   },
   availability: {
     type: String,
-    required: true
+    required: false
   },
   rating: {
     type: String,
-    required: true
+    required: false
   },
   summary: {
     type: String,

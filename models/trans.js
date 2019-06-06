@@ -33,7 +33,7 @@ const TransSchema = new Schema({
   },
   contraParty: {
     type: String,
-    required: true
+    required: false
   },
   condition: {
       type: String,
@@ -41,7 +41,7 @@ const TransSchema = new Schema({
   },
   notes: {
     type: String,
-    required: true
+    required: false
   },
   value: {
     display: "9.99", approx: 9.9900000000000002, currency: "USD",
@@ -50,7 +50,7 @@ const TransSchema = new Schema({
   },
   ProfitLoss: {
     type: String,
-    required: true
+    required: false
   },
   date: {
     type: Date,
