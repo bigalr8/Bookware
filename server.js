@@ -14,13 +14,14 @@ const routes = require("./routes");
 const app = express();
 
 //Define PORT server will listen on
-const PORT = process.env.PORT || 8000;
+const PORT = 3001;
+//process.env.PORT || 8000;
 
 //Connect Express URL body parsing middleware function 
 app.use(express.urlencoded({ extended: true }));
 
 //Connect Express JSON middleware function to parse requests with JSON payloads
-app.use(express.JSON());
+app.use(express.json());
 
 //Connect Express static middleware to server static file
 if (process.env.NODE_ENV === "production") {
@@ -39,10 +40,25 @@ mongoose.connect(
     }
 );
 
+
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+  });  
+
+app.get("*", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+
+  
+
+
 //Start the server listening and accepting connections on port defined
-app.listen(PORT, () =>
-    console.log("Server listening on port ${PORT}")
-);
+app.listen(PORT, () => {
+    console.log(`🌎 ==> API server now on port ${PORT}!`);
+  });
 
 
 

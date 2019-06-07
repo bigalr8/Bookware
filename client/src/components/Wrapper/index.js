@@ -11,31 +11,47 @@ class Wrapper extends Component {
     qi: "",
     message: "Search By ISBN or Title"
   };
-
+ componentDidMount () {this.getBooks()};
   handleInputChange = event => {
-    console.log("handleInputChange event: ", event,  " q: ", this.state.q);
+    console.log("handleInputChange event.target: ", event.target);
     const { name, value } = event.target;
-    console.log("handleInputChange name: ", name,  " type: ", typeof name, " value: ", value);
-
-    this.setState({
-      [name]: value
-    });
-
-    this.setState({
-      searchType: (name === "qi") ? "ISBN" : "Title"  
-    });
     
-    console.log("handleInputChange searchType: ",this.state.searchType )
+   // console.log("handleInputChange name: ", name, " value: ", value, " searchType: ",this.state.searchType);
+
+    let searchTypeVal = (name === "qi") ? "ISBN" : "title" ;  
+    console.log ("searchTypeVal: ", searchTypeVal);
+    this.setState({
+      [name]: value, 
+      //searchType: searchTypeVal 
+    });
+    console.log("handleInputChange q: ", this.state.q, " qi: ", this.state.qi, " searchType: ",this.state.searchType);
+     
+      
   };
 
   handleFormSubmit = event => {
-    console.log("handleFormSubmit event: ", event, event.target, "searchType: ",this.state.searchType);
+    const { name, value } = event.target;
+    
+    console.log("handleFormSubmit event.target: ", event.target);
+
+    console.log("handleFormSubmit name: ", name, " value: ", value);
+    this.setState({
+      [name]: value 
+      
+    });
+    console.log("handleFormSubmit searchType: ",this.state.searchType);
+
     event.preventDefault();
     this.getBooks();
   };
 
   getBooks = () => {
-    API.getBooks(this.state.q,this.state.searchType)
+    console.log("getBooks searchType: ",this.state.searchType );
+
+    let queryValue = (this.state.searchType === "ISBN") ? this.state.qi : this.state.q;
+    console.log ("getBooks queryValue: ", queryValue);
+
+    API.getBooks(queryValue,this.state.searchType)
       .then(res =>
         this.setState({
           books: res.data
@@ -70,7 +86,7 @@ class Wrapper extends Component {
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
                 q={this.state.q}
-                searchType = {"Title"}
+                searchType = {"title"}
                 name = {"q"}
                 value = {this.state.q}
               />

@@ -1,7 +1,7 @@
 import React from "react";
 
-function Form({q,name, value, searchType, handleInputChange, handleFormSubmit }) {
-    console.log ("Form name: ", {name}, " value: " , {value});
+function Form({name, value, searchType, handleInputChange, handleFormSubmit }) {
+    //console.log ("Form name: ", {name}, " value: " , {value});
     return (
     <div>
         <form>
@@ -25,6 +25,8 @@ function Form({q,name, value, searchType, handleInputChange, handleFormSubmit })
                     <button
                     onClick={handleFormSubmit}
                     type="submit"
+                    name = "searchType"
+                    value = { searchType}
                     >
                     Enter
                     </button>
