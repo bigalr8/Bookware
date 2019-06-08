@@ -29,7 +29,38 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //Connect routes 
+
+ 
+var cors = require('cors');
+
+ 
+
+// Then use it before your routes are set up:
+app.use(cors());
 app.use(routes);
+
+app.all('/', function(req, res, next) {
+  req.setRequestHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    next()
+  });  
+
+app.get("*", (req, res) => {
+  req.setRequestHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+
+
+
+
+ 
 
 //Open MongoDB
 mongoose.connect(
@@ -41,18 +72,8 @@ mongoose.connect(
 );
 
 
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-  });  
 
-app.get("*", (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
-
-  
+ 
 
 
 //Start the server listening and accepting connections on port defined

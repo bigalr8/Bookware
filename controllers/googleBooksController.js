@@ -13,11 +13,13 @@ module.exports = {
       .get("https://www.googleapis.com/books/v1/volumes", {
         params
       })
-      .then(results =>
+      .then(results => 
+        //console.log(results.data.items);
         results.data.items.filter(
           result =>
             result.volumeInfo.title  
         )
+        
       )
        
       .then(books => res.json(books))

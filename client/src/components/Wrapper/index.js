@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Form from "../Form"; 
+import Book from "../Book"; 
+import { List } from "../List";
 import API from "../../utils/API";
  
 
@@ -50,8 +52,8 @@ class Wrapper extends Component {
 
     let queryValue = (this.state.searchType === "ISBN") ? this.state.qi : this.state.q;
     console.log ("getBooks queryValue: ", queryValue);
-
-    API.getBooks(queryValue,this.state.searchType)
+    let searchTypeVal = this.state.searchType;
+    API.getBooks(queryValue,searchTypeVal)
       .then(res =>
         this.setState({
           books: res.data
@@ -68,6 +70,7 @@ class Wrapper extends Component {
   render() {
     return (
             <div>
+
               <h1 className="text-center">
                 <strong>Bookware</strong>
               </h1>
@@ -91,12 +94,31 @@ class Wrapper extends Component {
                 value = {this.state.q}
               />
               
-                <div title="Results">
-                {this.state.books}
-                </div> 
+              <div title="Results">
+                {this.state.books.length? (
+                    <List>
+                      {this.state.books.map(book => (
+                        <Book 
+                          key={book.id}
+                          title={book.volumeInfo.title}
+                          subtitle={book.volumeInfo.subtitle}
+                          link={book.volumeInfo.infoLink}
+                          authors={book.volumeInfo.authors.join(", ")}
+                          description={book.volumeInfo.description}
+                          image={book.volumeInfo.imageLinks.thumbnail}
+                          />
+                      ))}
+                    </List>
+                )
+                    :
+                      (
+                        <h2 className="text-center">{this.state.message}</h2>
+                      )   
+              }
+              </div>    
             </div>
-            ) 
-    };
-};
+        )  
+    }; 
+};  
 
 export default Wrapper;
