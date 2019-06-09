@@ -67,6 +67,13 @@ class Wrapper extends Component {
       );
   };
 
+  formatDate = (pubDate) => {
+    console.log("pubDate: ", pubDate)
+    let d = new Date(pubDate+"T00:00:00"); 
+    return d.toLocaleString('en-us', { month: 'long' }) + " " + d.getDate() + ", " + d.getFullYear();
+    
+  }
+
   render() {
     return (
             <div>
@@ -93,28 +100,30 @@ class Wrapper extends Component {
                 name = {"q"}
                 value = {this.state.q}
               />
-              
+              <hr></hr>
               <div title="Results">
                 {this.state.books.length? (
                     <List>
                       {this.state.books.map(book => (
                         <Book 
-                          //key={book.id}
+                          key ={book.volumeInfo.industryIdentifiers.length >1 && book.volumeInfo.industryIdentifiers[1].type === "ISBN_13"?
+                          book.volumeInfo.industryIdentifiers[1].identifier:book.volumeInfo.industryIdentifiers[0].identifier}
                           title={book.volumeInfo.title}
                           subtitle={book.volumeInfo.subtitle}
                           link={book.volumeInfo.infoLink}
                           authors={book.volumeInfo.authors.join(", ")}
-                          description={book.volumeInfo.description}
+                          description={book.volumeInfo.description.substring(0,355)+"..."}
                           image={book.volumeInfo.imageLinks.thumbnail}
                           keyISBN ={book.volumeInfo.industryIdentifiers.length >1 && book.volumeInfo.industryIdentifiers[1].type === "ISBN_13"?
                           book.volumeInfo.industryIdentifiers[1].identifier:book.volumeInfo.industryIdentifiers[0].identifier}
-                          //isbn1 ={book.volumeInfo.industryIdentifiers.length?book.volumeInfo.industryIdentifiers[0].identifier:""}
-                          //isbn2Typ={book.volumeInfo.industryIdentifiers.length > 1?book.volumeInfo.industryIdentifiers[1].type:""}
-                          //isbn2={book.volumeInfo.industryIdentifiers.length > 1?book.volumeInfo.industryIdentifiers[1].identifier:""}
-                          /*SaveButton = { () => (
+                          PubDate={()=>this.formatDate(book.volumeInfo.publishedDate)} 
+                          SaveButton = { () => (
                             <button
-                              onClick={() => this.handleSaveBook()}
-                          ) }*/
+                              onClick={() => this.handleSaveBook(this.keyISBN)}
+                            > 
+                            Include
+                            </button>
+                          ) }
                           />
                       ))}
                     </List>

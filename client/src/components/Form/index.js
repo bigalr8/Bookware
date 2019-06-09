@@ -17,6 +17,7 @@ function Form({name, value, searchType, handleInputChange, handleFormSubmit }) {
                     value={ value }
                     placeholder=""
                     name= { name }
+                    onfocus="this.value=''"
                     onChange={handleInputChange}
                     required
                 />

@@ -3,20 +3,28 @@ import { ListItem } from "../List";
   
  
 
-function Book({ title, subtitle, authors, link, description, image, keyISBN  }) {
+function Book({ title, subtitle, authors, link, description, image, keyISBN, SaveButton, PubDate  }) {
   return (
     <ListItem>
         <h3  >{title}</h3>
-         <h5>{subtitle}</h5>
-         <h5>  {keyISBN}  </h5>
+        <p>{subtitle}</p>
+        <p>
+        <span>  {keyISBN} </span>
+        <span> - </span>
+        <span> {authors}</span>
+        <span> - </span>
+        <span><PubDate></PubDate></span>
+        </p>
+        <br></br>
+        <img   src={image} alt={title} />
+        <SaveButton />
+        <p>{description}</p>
         <div  >
-            <a href={link}>
-              View
+            <a target="_blank" rel="noopener noreferrer" href={link}>
+              Read more
             </a>
         </div>
-        <p>Written by {authors}</p>
-        <img   src={image} alt={title} />
-        <p>{description}</p>
+        <hr></hr>
     </ListItem>
   );
 }
