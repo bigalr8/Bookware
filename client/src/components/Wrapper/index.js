@@ -99,13 +99,22 @@ class Wrapper extends Component {
                     <List>
                       {this.state.books.map(book => (
                         <Book 
-                          key={book.id}
+                          //key={book.id}
                           title={book.volumeInfo.title}
                           subtitle={book.volumeInfo.subtitle}
                           link={book.volumeInfo.infoLink}
                           authors={book.volumeInfo.authors.join(", ")}
                           description={book.volumeInfo.description}
                           image={book.volumeInfo.imageLinks.thumbnail}
+                          keyISBN ={book.volumeInfo.industryIdentifiers.length >1 && book.volumeInfo.industryIdentifiers[1].type === "ISBN_13"?
+                          book.volumeInfo.industryIdentifiers[1].identifier:book.volumeInfo.industryIdentifiers[0].identifier}
+                          //isbn1 ={book.volumeInfo.industryIdentifiers.length?book.volumeInfo.industryIdentifiers[0].identifier:""}
+                          //isbn2Typ={book.volumeInfo.industryIdentifiers.length > 1?book.volumeInfo.industryIdentifiers[1].type:""}
+                          //isbn2={book.volumeInfo.industryIdentifiers.length > 1?book.volumeInfo.industryIdentifiers[1].identifier:""}
+                          /*SaveButton = { () => (
+                            <button
+                              onClick={() => this.handleSaveBook()}
+                          ) }*/
                           />
                       ))}
                     </List>
