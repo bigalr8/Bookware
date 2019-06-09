@@ -61,4 +61,4 @@ const EditionSchema = new Schema({
     default: Date.now
   }
 });
-module.exports = Edition = mongoose.model("edition", UserSchema);
+module.exports = Edition = mongoose.model("edition", EditionSchema);

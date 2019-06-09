@@ -57,7 +57,7 @@ const TransSchema = new Schema({
     default: Date.now
   }
 });
-module.exports = Trans = mongoose.model("trans", UserSchema);
+module.exports = Trans = mongoose.model("trans", TransSchema);
 
 
  

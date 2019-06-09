@@ -12,10 +12,10 @@ const BookSchema = new Schema({
   },
   subtitle: {
     type: String,
-    required: true
+    required: false
   },
-  author: {
-    type: String,
+  authors: {
+    type: [String],
     required: true
   },
   genre: {
@@ -35,9 +35,9 @@ const BookSchema = new Schema({
     required: true
   },
   price: {
-    display: "9.99", approx: 9.9900000000000002, currency: "USD",
+    //display: "9.99", approx: 9.9900000000000002, currency: "USD",
     type: String,
-    required: true
+    required: false
   },
   availability: {
     type: String,
@@ -47,11 +47,11 @@ const BookSchema = new Schema({
     type: String,
     required: false
   },
-  summary: {
+  description: {
     type: String,
     required: true
   },
-  googleID: {
+  googleId: {
     type: String,
     required: true
   },
@@ -60,4 +60,4 @@ const BookSchema = new Schema({
     default: Date.now
   }
 });
-module.exports = Book = mongoose.model("book", UserSchema);
+module.exports = Book = mongoose.model("book", BookSchema);
