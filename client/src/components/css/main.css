@@ -1,0 +1,44 @@
+h1 {
+  font-family: "Montserrat";
+  text-align: center;
+  color: white;
+}
+
+.s1 {
+  background: url("../images/bookcopy.jpg");
+  background-size: cover;
+}
+
+.s1 h2{
+  color: black;
+  text-align: center;
+  font-size: 30px;
+}
+
+.s2 {
+  background: url("../images/two.jpg");
+  background-size: cover;
+}
+
+.s2 h1 {
+  text-align: left;
+  margin-left: 2em;
+  font-size: 4rem;
+  color: white;
+}
+
+.s2 p{
+  color: white;
+  text-align: center;
+}
+.s3 {
+  background: url("../images/three.jpg");
+  background-size: cover;
+}
+
+.s3 h1 {
+  text-align: left;
+  margin-left: 2em;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=main.css.map */
