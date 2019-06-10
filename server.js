@@ -25,7 +25,7 @@ app.use(express.json());
 
 //Connect Express static middleware to server static file
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/public"));
+    app.use(express.static("client/public/index.html"));
 }
 
 //Connect routes 
