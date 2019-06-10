@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Book from "../../components/Book";
 import API from "../../utils/API";
-import  List  from "../../components/List";
+import  {List } from "../../components/List";
 
 class Saved extends Component {
   state = {

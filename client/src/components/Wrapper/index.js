@@ -155,7 +155,7 @@ class Wrapper extends Component {
                           keyISBN ={book.volumeInfo.industryIdentifiers.length > 1 && book.volumeInfo.industryIdentifiers[1].type === "ISBN_13"?
                           book.volumeInfo.industryIdentifiers[1].identifier:book.volumeInfo.industryIdentifiers[0].identifier}
                           PubDate={()=>this.formatDate(book.volumeInfo.publishedDate)} 
-                          SaveButton = { () => (
+                          Button = { () => (
                             <button
                               onClick={() => this.handleSaveBook(book.id)}
                             > 

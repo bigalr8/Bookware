@@ -3,7 +3,7 @@ import { ListItem } from "../List";
   
  
 
-function Book({ title, subtitle, authors, link, description, image, keyISBN, SaveButton, PubDate  }) {
+function Book({ title, subtitle, authors, link, description, image, keyISBN, Button, PubDate  }) {
   //console.log({title});
   return (
     <ListItem>
@@ -14,17 +14,17 @@ function Book({ title, subtitle, authors, link, description, image, keyISBN, Sav
         <span> - </span>
         <span> {authors}</span>
         <span> - </span>
-        <span><PubDate></PubDate></span>
+        {/* <span><PubDate></PubDate></span> */}
         </p>
         <br></br>
         <img   src={image} alt={title} />
-        <SaveButton />
+        <Button />
         <p>{description}</p>
-        <div  >
+        {/* <div  >
             <a target="_blank" rel="noopener noreferrer" href={link}>
               Read more
             </a>
-        </div>
+        </div> */}
         <hr></hr>
     </ListItem>
   );
