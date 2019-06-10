@@ -14,8 +14,8 @@ const routes = require("./routes");
 const app = express();
 
 //Define PORT server will listen on
-const PORT = 3001;
-//process.env.PORT || 8000;
+// const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 //Connect Express URL body parsing middleware function 
 app.use(express.urlencoded({ extended: true }));
