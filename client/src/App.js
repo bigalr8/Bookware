@@ -19,19 +19,19 @@ export default App;
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //import Home from "./pages/Home";
-//import Saved from "./pages/Saved";
+import SavedBooks from "./pages/SavedBooks";
 //import NoMatch from "./pages/NoMatch";
-//import Nav from "./components/Nav";
+import Nav from "./components/Nav";
 import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
     <Router>
       <div>
-       {/* // <Nav /> */}
+        <Nav /> 
         <Switch>
           <Route exact path="/" component={Wrapper} />
-          {/* //<Route exact path="/saved" component={Saved} /> */}
+          <Route exact path="/saved" component={SavedBooks} /> 
           {/* //<Route component={NoMatch} /> */}
         </Switch>
       </div>

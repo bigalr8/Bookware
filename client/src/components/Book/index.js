@@ -4,6 +4,7 @@ import { ListItem } from "../List";
  
 
 function Book({ title, subtitle, authors, link, description, image, keyISBN, SaveButton, PubDate  }) {
+  //console.log({title});
   return (
     <ListItem>
         <h3  >{title}</h3>

@@ -9,7 +9,13 @@ export default {
     saveBook: function(bookInfo) {
         console.log("API saveBook bookInfo: ", bookInfo);
         return axios.post("/api/books", bookInfo);
-      }
+      },
+    getSavedBooks: function() {
+        return axios.get("/api/books");
+      },
  
-   
+    
+    deleteBook: function(id) {
+      return axios.delete("/api/books/" + id);
+      }
 };

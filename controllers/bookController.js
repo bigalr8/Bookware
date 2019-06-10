@@ -26,6 +26,7 @@ module.exports = {
         });
       },
       findById: function(req, res) {
+          console.log("findById req: ", req.params.id)
         db.Book.findById(req.params.id)
           .then(dbBook => res.json(dbBook))
           //.catch(err => res.status(422).json(err));
@@ -50,6 +51,7 @@ module.exports = {
         });
       },
       findAll: function(req, res) {
+        console.log("findAll req: ", req.query)
         db.Book.find(req.query)
           .then(dbBook => res.json(dbBook))
          // .catch(err => res.status(422).json(err));
